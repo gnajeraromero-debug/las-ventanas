@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans text-base leading-relaxed;
+  }
+
+  ::selection {
+    @apply bg-olive-200 text-charcoal-dark;
+  }
+}
+
+@layer components {
+  .parallax-hero {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @media (max-width: 768px) {
+    .parallax-hero {
+      background-attachment: scroll;
+    }
+  }
+
+  .nav-link {
+    @apply text-[11px] uppercase tracking-widest-plus
+           transition-colors duration-500
+           relative font-sans font-medium;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-[1px]
+           transition-all duration-500;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-label {
+    @apply text-[11px] uppercase tracking-ultra-wide text-olive-500
+           font-sans font-medium mb-6 block;
+  }
+
+  .section-heading {
+    @apply font-serif text-3xl md:text-5xl text-charcoal-dark
+           leading-tight font-normal;
+  }
+
+  .body-text {
+    @apply text-stone-600 font-light leading-relaxed text-base md:text-lg;
+  }
+
+  .form-input {
+    @apply w-full bg-transparent border-b border-stone-300 py-4
+           text-charcoal font-sans text-sm tracking-wide
+           focus:outline-none focus:border-charcoal-dark
+           transition-colors duration-500 placeholder:text-stone-400;
+  }
+
+  .btn-primary {
+    @apply bg-charcoal-dark text-ivory font-sans text-[11px] uppercase
+           tracking-widest-plus py-5 px-12
+           hover:bg-charcoal transition-all duration-500;
+  }
+
+  .btn-outline {
+    @apply border border-charcoal-dark text-charcoal-dark font-sans
+           text-[11px] uppercase tracking-widest-plus py-4 px-10
+           hover:bg-charcoal-dark hover:text-ivory
+           transition-all duration-500;
+  }
+}
+
+/* Faded image overlay for hero sections */
+.hero-fade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 249, 246, 0) 0%,
+    rgba(250, 249, 246, 0.1) 50%,
+    rgba(250, 249, 246, 0.5) 85%,
+    rgba(250, 249, 246, 0.8) 100%
+  );
+}
+
+/* Separator line */
+.separator {
+  @apply w-16 h-[1px] bg-stone-300 mx-auto;
+}
